@@ -12,8 +12,8 @@ app.listen(5000, () => {
 });
 
 
-// GET /data/{place&type}
-app.get("/data/:place&type", (req, res) => {
+// GET /data/{place}
+app.get("/data/:place/:type", (req, res) => {
     const place = req.params.place;
     const type = req.params.type;  
     if (place != '' && type != '') {
