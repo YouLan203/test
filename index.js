@@ -16,8 +16,14 @@ app.listen(5000, () => {
 app.get("/data/:place/:type", (req, res) => {
     const place = req.params.place;
     const type = req.params.type;  
+    
+    const encodedPlace = encodeURI(place);
+    const decodedPlace = decodeURI(encodedPlace);
+    
+    const encodedType = encodeURI(type);
+    const decodedType = decodeURI(encodedType);
     if (place != '' && type != '') {
-        return res.status(200).json({ '區域': place, '產業別': type });
+        return res.status(200).json({ '區域': decodedPlace, '產業別': decodedType });
     } else {
         return res.status(200).json({ '區域': null, '產業別': null });
     }
